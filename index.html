@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤 — engineering intelligence, infrastructure, security and software systems for what comes next.">
+<meta property="og:title" content="𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤">
+<meta property="og:description" content="Systems behind intelligence.">
+<meta property="og:type" content="website">
+<title>𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤 — Systems Behind Intelligence</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --bg:#050505;
+  --bg2:#080808;
+  --white:#f7f7f2;
+  --soft:#dcdcd5;
+  --muted:#96968f;
+  --dim:#595954;
+  --line:rgba(255,255,255,.12);
+  --line2:rgba(255,255,255,.055);
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Inter,Arial,sans-serif;
+  --display:Manrope,Inter,Arial,sans-serif;
+  --mono:"DM Mono",monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--sans);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+
+::selection{
+  background:#f4f4ef;
+  color:#050505;
+}
+
+/* ---------- GLOBAL MEDIA ---------- */
+
+.media{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.media img,
+.media video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  opacity:.76;
+  filter:saturate(.78) contrast(1.05);
+  transform:scale(1.025);
+}
+
+.media:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,
+      rgba(5,5,5,.96) 0%,
+      rgba(5,5,5,.58) 34%,
+      rgba(5,5,5,.18) 68%,
+      rgba(5,5,5,.70) 100%),
+    linear-gradient(180deg,
+      rgba(5,5,5,.74) 0%,
+      transparent 28%,
+      transparent 66%,
+      rgba(5,5,5,.94) 100%);
+}
+
+.media-soft:after{
+  background:
+    linear-gradient(90deg,
+      rgba(5,5,5,.96),
+      rgba(5,5,5,.22) 58%,
+      rgba(5,5,5,.82)),
+    linear-gradient(180deg,
+      rgba(5,5,5,.70),
+      transparent 30%,
+      rgba(5,5,5,.96));
+}
+
+/* ---------- NAV ---------- */
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 4.2vw;
+  border-bottom:1px solid transparent;
+  transition:.45s ease;
+}
+
+.nav.scrolled{
+  height:66px;
+  background:rgba(5,5,5,.76);
+  backdrop-filter:blur(22px);
+  border-color:var(--line2);
+}
+
+.brand{
+  font-family:var(--display);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+
+.nav-link{
+  font-family:var(--mono);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:#aaa9a3;
+  transition:.25s;
+}
+
+.nav-link:hover{color:white}
+
+.nav-status{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.15em;
+  color:#8e8e88;
+}
+
+.status-dot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#ddd;
+  box-shadow:0 0 12px rgba(255,255,255,.5);
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  padding:0 5vw 9vh;
+}
+
+.hero .media img{
+  opacity:.63;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:min(1100px,92vw);
+}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  color:#c9c9c3;
+  margin-bottom:30px;
+}
+
+.hero-title{
+  margin:0;
+  font-family:var(--display);
+  font-size:clamp(64px,10.5vw,178px);
+  font-weight:500;
+  letter-spacing:-.075em;
+  line-height:.82;
+  max-width:1200px;
+}
+
+.hero-title span{
+  display:block;
+}
+
+.hero-title .italic{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:-.065em;
+}
+
+.hero-bottom{
+  margin-top:48px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:50px;
+  max-width:1050px;
+}
+
+.hero-copy{
+  max-width:610px;
+  font-size:17px;
+  line-height:1.65;
+  color:#ededE7;
+  font-weight:400;
+}
+
+.hero-meta{
+  font-family:var(--mono);
+  font-size:8px;
+  line-height:1.9;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#aaa9a2;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.hero-scroll{
+  position:absolute;
+  right:4.2vw;
+  bottom:8vh;
+  writing-mode:vertical-rl;
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.2em;
+  color:#85857f;
+}
+
+/* ---------- INTRO ---------- */
+
+.intro{
+  position:relative;
+  min-height:100vh;
+  padding:18vh 7vw 16vh;
+  overflow:hidden;
+}
+
+.intro-kicker{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.22em;
+  color:#9d9d96;
+  text-transform:uppercase;
+  margin-bottom:85px;
+}
+
+.intro-statement{
+  max-width:1220px;
+  font-family:var(--display);
+  font-size:clamp(42px,6.4vw,102px);
+  line-height:.96;
+  letter-spacing:-.06em;
+  font-weight:400;
+}
+
+.intro-statement em{
+  font-family:var(--serif);
+  font-weight:400;
+  color:#fff;
+}
+
+.intro-aside{
+  margin-top:130px;
+  margin-left:auto;
+  width:min(430px,80vw);
+  color:#b7b7b0;
+  font-size:14px;
+  line-height:1.75;
+}
+
+.intro-aside strong{
+  display:block;
+  color:#f2f2ed;
+  font-weight:500;
+  margin-bottom:15px;
+}
+
+.vertical-note{
+  position:absolute;
+  left:3vw;
+  bottom:15vh;
+  writing-mode:vertical-rl;
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.18em;
+  color:#5e5e59;
+  text-transform:uppercase;
+}
+
+/* ---------- FULL BLEED VIDEO ---------- */
+
+.film{
+  position:relative;
+  height:105vh;
+  min-height:680px;
+  overflow:hidden;
+}
+
+.film video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.66;
+  filter:saturate(.72) contrast(1.08);
+  transform:scale(1.035);
+}
+
+.film:before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:
+    linear-gradient(180deg,
+      #050505 0%,
+      rgba(5,5,5,.04) 23%,
+      rgba(5,5,5,.06) 65%,
+      #050505 100%);
+}
+
+.film:after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:
+    linear-gradient(90deg,
+      rgba(5,5,5,.92),
+      transparent 42%,
+      rgba(5,5,5,.30) 75%,
+      rgba(5,5,5,.72));
+}
+
+.film-copy{
+  position:absolute;
+  z-index:3;
+  left:7vw;
+  bottom:13vh;
+  max-width:850px;
+}
+
+.film-label{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.22em;
+  color:#d0d0ca;
+  text-transform:uppercase;
+  margin-bottom:26px;
+}
+
+.film-title{
+  font-family:var(--display);
+  font-size:clamp(48px,7vw,110px);
+  line-height:.9;
+  letter-spacing:-.065em;
+  font-weight:500;
+}
+
+.film-title em{
+  font-family:var(--serif);
+  font-weight:400;
+}
+
+.film-mark{
+  position:absolute;
+  z-index:3;
+  top:13vh;
+  right:5vw;
+  font-family:var(--mono);
+  font-size:8px;
+  color:#c0c0ba;
+  letter-spacing:.15em;
+  writing-mode:vertical-rl;
+}
+
+/* ---------- CAPABILITY FIELD ---------- */
+
+.capabilities{
+  position:relative;
+  padding:19vh 5vw 20vh;
+  background:var(--bg);
+  overflow:hidden;
+}
+
+.cap-head{
+  position:relative;
+  margin-bottom:125px;
+}
+
+.cap-index{
+  font-family:var(--mono);
+  font-size:9px;
+  color:#8e8e88;
+  letter-spacing:.2em;
+}
+
+.cap-headline{
+  margin:28px 0 0;
+  font-family:var(--display);
+  font-size:clamp(52px,8.5vw,135px);
+  line-height:.84;
+  letter-spacing:-.075em;
+  font-weight:500;
+  max-width:1100px;
+}
+
+.cap-headline em{
+  font-family:var(--serif);
+  font-weight:400;
+}
+
+.cap-intro{
+  position:absolute;
+  right:2vw;
+  bottom:0;
+  width:300px;
+  font-size:13px;
+  line-height:1.7;
+  color:#999992;
+}
+
+/* THE IMPORTANT PART: NO BOXES */
+
+.cap-field{
+  position:relative;
+  min-height:1450px;
+  border-top:1px solid var(--line2);
+  border-bottom:1px solid var(--line2);
+  padding:90px 0;
+}
+
+.cap{
+  position:absolute;
+  font-family:var(--display);
+  color:#eee;
+  letter-spacing:-.045em;
+  line-height:.92;
+  font-weight:400;
+  transition:transform .5s ease,color .4s ease;
+  cursor:default;
+}
+
+.cap:hover{
+  color:#fff;
+  transform:translateX(10px);
+}
+
+.cap small{
+  display:block;
+  margin-bottom:10px;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.19em;
+  color:#666660;
+  text-transform:uppercase;
+  font-weight:400;
+}
+
+.c1{left:0;top:75px;font-size:clamp(27px,3.3vw,52px)}
+.c2{left:26%;top:120px;font-size:clamp(18px,2.1vw,32px)}
+.c3{right:3%;top:65px;font-size:clamp(13px,1.4vw,22px)}
+.c4{left:8%;top:230px;font-size:clamp(14px,1.7vw,26px)}
+.c5{right:20%;top:255px;font-size:clamp(28px,4vw,62px)}
+.c6{left:0;top:375px;font-size:clamp(17px,2vw,30px)}
+.c7{left:37%;top:390px;font-size:clamp(12px,1.2vw,18px)}
+.c8{right:0;top:420px;font-size:clamp(21px,2.7vw,42px)}
+.c9{left:16%;top:500px;font-size:clamp(12px,1.35vw,21px)}
+.c10{left:0;top:610px;font-size:clamp(30px,4.5vw,70px)}
+.c11{right:16%;top:585px;font-size:clamp(15px,1.8vw,28px)}
+.c12{right:0;top:690px;font-size:clamp(11px,1.2vw,18px)}
+.c13{left:34%;top:675px;font-size:clamp(20px,2.5vw,39px)}
+.c14{left:2%;top:790px;font-size:clamp(13px,1.5vw,23px)}
+.c15{right:30%;top:800px;font-size:clamp(25px,3vw,46px)}
+.c16{right:3%;top:830px;font-size:clamp(12px,1.3vw,20px)}
+.c17{left:0;top:940px;font-size:clamp(19px,2.3vw,35px)}
+.c18{left:25%;top:925px;font-size:clamp(11px,1.15vw,17px)}
+.c19{right:11%;top:955px;font-size:clamp(27px,3.4vw,53px)}
+.c20{left:9%;top:1030px;font-size:clamp(12px,1.35vw,20px)}
+.c21{right:32%;top:1050px;font-size:clamp(17px,2vw,31px)}
+.c22{right:0;top:1100px;font-size:clamp(24px,3vw,47px)}
+.c23{left:0;top:1190px;font-size:clamp(25px,3.2vw,50px)}
+.c24{left:39%;top:1185px;font-size:clamp(11px,1.25vw,19px)}
+.c25{right:12%;top:1210px;font-size:clamp(17px,2vw,31px)}
+.c26{left:19%;top:1285px;font-size:clamp(28px,3.5vw,55px)}
+.c27{right:0;top:1300px;font-size:clamp(12px,1.3vw,20px)}
+
+.cap-more{
+  margin-top:100px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  column-gap:12vw;
+  row-gap:25px;
+  max-width:1100px;
+}
+
+.cap-more-item{
+  font-family:var(--display);
+  font-size:clamp(17px,2vw,28px);
+  letter-spacing:-.035em;
+  color:#cfcfc9;
+  border-bottom:1px solid var(--line2);
+  padding-bottom:17px;
+}
+
+.cap-more-item span{
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.16em;
+  color:#5f5f5a;
+  margin-right:15px;
+}
+
+/* ---------- IMAGE INTERLUDE ---------- */
+
+.image-interlude{
+  position:relative;
+  height:110vh;
+  min-height:700px;
+  overflow:hidden;
+}
+
+.image-interlude img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.7;
+  filter:saturate(.72) contrast(1.08);
+  transform:scale(1.035);
+}
+
+.image-interlude:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,#050505 0%,transparent 23%,transparent 72%,#050505 100%),
+    linear-gradient(90deg,rgba(5,5,5,.9),transparent 55%,rgba(5,5,5,.45));
+}
+
+.interlude-copy{
+  position:absolute;
+  z-index:2;
+  left:7vw;
+  top:18vh;
+}
+
+.interlude-number{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.22em;
+  color:#bcbcb6;
+}
+
+.interlude-title{
+  margin-top:35px;
+  font-family:var(--display);
+  font-size:clamp(50px,8vw,125px);
+  line-height:.83;
+  letter-spacing:-.07em;
+}
+
+.interlude-title em{
+  font-family:var(--serif);
+}
+
+.interlude-side{
+  position:absolute;
+  z-index:2;
+  right:5vw;
+  bottom:16vh;
+  width:300px;
+  font-size:13px;
+  line-height:1.7;
+  color:#dddcd6;
+}
+
+/* ---------- ENGINEERING ---------- */
+
+.engineering{
+  position:relative;
+  padding:20vh 7vw;
+  overflow:hidden;
+}
+
+.engineering-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:60px;
+  margin-bottom:150px;
+}
+
+.engineering-title{
+  max-width:950px;
+  font-family:var(--display);
+  font-size:clamp(47px,6.8vw,104px);
+  line-height:.9;
+  letter-spacing:-.065em;
+  font-weight:400;
+}
+
+.engineering-title em{
+  font-family:var(--serif);
+}
+
+.engineering-note{
+  width:280px;
+  padding-top:12px;
+  color:#8d8d87;
+  font-size:12px;
+  line-height:1.75;
+}
+
+.engineering-note strong{
+  display:block;
+  color:#e9e9e4;
+  margin-bottom:12px;
+  font-weight:500;
+}
+
+.engineering-list{
+  border-top:1px solid var(--line);
+}
+
+.engineering-row{
+  display:grid;
+  grid-template-columns:80px 1fr 240px;
+  align-items:center;
+  min-height:112px;
+  border-bottom:1px solid var(--line2);
+  transition:.35s;
+}
+
+.engineering-row:hover{
+  padding-left:14px;
+}
+
+.engineering-row .num{
+  font-family:var(--mono);
+  font-size:8px;
+  color:#5f5f5a;
+  letter-spacing:.14em;
+}
+
+.engineering-row .name{
+  font-family:var(--display);
+  font-size:clamp(23px,3vw,45px);
+  letter-spacing:-.045em;
+}
+
+.engineering-row .desc{
+  font-family:var(--mono);
+  font-size:8px;
+  line-height:1.6;
+  letter-spacing:.08em;
+  color:#696963;
+  text-transform:uppercase;
+}
+
+/* ---------- POSITIONING ---------- */
+
+.position{
+  position:relative;
+  min-height:105vh;
+  padding:17vh 7vw;
+  overflow:hidden;
+}
+
+.position-word{
+  font-family:var(--display);
+  font-size:clamp(60px,12vw,190px);
+  line-height:.77;
+  letter-spacing:-.085em;
+  font-weight:500;
+}
+
+.position-word:nth-child(2){
+  margin-left:13vw;
+}
+
+.position-word:nth-child(3){
+  margin-left:29vw;
+}
+
+.position-sub{
+  margin-top:100px;
+  max-width:590px;
+  font-size:18px;
+  line-height:1.65;
+  color:#d5d5cf;
+}
+
+.position-sub strong{
+  color:white;
+  font-weight:500;
+}
+
+/* ---------- FINAL FILM ---------- */
+
+.final-film{
+  position:relative;
+  height:100vh;
+  min-height:680px;
+  overflow:hidden;
+}
+
+.final-film video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.58;
+  filter:saturate(.65) contrast(1.12);
+}
+
+.final-film:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,
+      #050505 0%,
+      rgba(5,5,5,.08) 28%,
+      rgba(5,5,5,.22) 65%,
+      #050505 100%),
+    linear-gradient(90deg,
+      rgba(5,5,5,.82),
+      transparent 60%,
+      rgba(5,5,5,.6));
+}
+
+.final-copy{
+  position:absolute;
+  z-index:2;
+  left:7vw;
+  bottom:15vh;
+}
+
+.final-kicker{
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.2em;
+  color:#bcbcb6;
+  margin-bottom:30px;
+}
+
+.final-title{
+  font-family:var(--display);
+  font-size:clamp(55px,9vw,145px);
+  line-height:.82;
+  letter-spacing:-.075em;
+}
+
+.final-title em{
+  font-family:var(--serif);
+}
+
+.final-cta{
+  margin-top:50px;
+  display:inline-flex;
+  align-items:center;
+  gap:22px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.final-cta:hover{
+  gap:34px;
+  border-color:white;
+}
+
+/* ---------- CLOSING ---------- */
+
+.closing{
+  position:relative;
+  padding:20vh 7vw 10vh;
+  overflow:hidden;
+}
+
+.closing-label{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.2em;
+  color:#777771;
+  text-transform:uppercase;
+}
+
+.closing-title{
+  margin:45px 0 90px;
+  max-width:1100px;
+  font-family:var(--display);
+  font-size:clamp(54px,8vw,125px);
+  line-height:.86;
+  letter-spacing:-.075em;
+  font-weight:500;
+}
+
+.closing-title em{
+  font-family:var(--serif);
+  font-weight:400;
+}
+
+.closing-copy{
+  max-width:680px;
+  font-size:16px;
+  line-height:1.8;
+  color:#c2c2bb;
+}
+
+.closing-contact{
+  margin-top:80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:30px;
+  padding-top:25px;
+  border-top:1px solid var(--line);
+}
+
+.contact-link{
+  font-family:var(--display);
+  font-size:clamp(24px,3vw,45px);
+  letter-spacing:-.045em;
+}
+
+.contact-meta{
+  font-family:var(--mono);
+  font-size:8px;
+  line-height:1.8;
+  color:#696963;
+  text-align:right;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+.footer{
+  margin-top:180px;
+  padding-top:22px;
+  border-top:1px solid var(--line2);
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:7px;
+  letter-spacing:.14em;
+  color:#575751;
+  text-transform:uppercase;
+}
+
+/* ---------- REVEALS ---------- */
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 1s ease,transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:800px){
+
+  .nav{
+    height:68px;
+    padding:0 5vw;
+  }
+
+  .nav-right{
+    gap:14px;
+  }
+
+  .nav-link{display:none}
+
+  .hero{
+    padding:0 6vw 9vh;
+    min-height:100svh;
+  }
+
+  .hero-title{
+    font-size:clamp(58px,17vw,105px);
+  }
+
+  .hero-bottom{
+    display:block;
+    margin-top:34px;
+  }
+
+  .hero-copy{
+    font-size:14px;
+    max-width:90%;
+  }
+
+  .hero-meta{
+    display:none;
+  }
+
+  .hero-scroll{
+    display:none;
+  }
+
+  .intro{
+    padding:14vh 7vw;
+  }
+
+  .intro-kicker{
+    margin-bottom:55px;
+  }
+
+  .intro-statement{
+    font-size:clamp(39px,10vw,70px);
+  }
+
+  .intro-aside{
+    margin-top:90px;
+    width:90%;
+  }
+
+  .film{
+    height:82vh;
+    min-height:560px;
+  }
+
+  .film-copy{
+    left:7vw;
+    bottom:11vh;
+  }
+
+  .film-title{
+    font-size:clamp(45px,12vw,78px);
+  }
+
+  .capabilities{
+    padding:14vh 6vw;
+  }
+
+  .cap-head{
+    margin-bottom:80px;
+  }
+
+  .cap-headline{
+    font-size:clamp(50px,13vw,90px);
+  }
+
+  .cap-intro{
+    position:relative;
+    right:auto;
+    margin-top:50px;
+    width:90%;
+  }
+
+  .cap-field{
+    min-height:1750px;
+  }
+
+  .c1{left:0;top:70px}
+  .c2{left:35%;top:130px}
+  .c3{right:0;top:220px}
+  .c4{left:8%;top:290px}
+  .c5{right:4%;top:365px}
+  .c6{left:0;top:465px}
+  .c7{left:42%;top:500px}
+  .c8{right:0;top:570px}
+  .c9{left:10%;top:640px}
+  .c10{left:0;top:730px}
+  .c11{right:4%;top:805px}
+  .c12{right:0;top:900px}
+  .c13{left:27%;top:865px}
+  .c14{left:0;top:970px}
+  .c15{right:8%;top:1030px}
+  .c16{right:0;top:1110px}
+  .c17{left:0;top:1160px}
+  .c18{left:34%;top:1215px}
+  .c19{right:0;top:1265px}
+  .c20{left:8%;top:1335px}
+  .c21{right:25%;top:1370px}
+  .c22{right:0;top:1430px}
+  .c23{left:0;top:1485px}
+  .c24{left:38%;top:1535px}
+  .c25{right:3%;top:1580px}
+  .c26{left:8%;top:1640px}
+  .c27{right:0;top:1690px}
+
+  .cap-more{
+    grid-template-columns:1fr;
+    margin-top:70px;
+  }
+
+  .image-interlude{
+    height:78vh;
+    min-height:570px;
+  }
+
+  .interlude-title{
+    font-size:clamp(48px,13vw,85px);
+  }
+
+  .interlude-side{
+    width:75%;
+    bottom:10vh;
+  }
+
+  .engineering{
+    padding:15vh 7vw;
+  }
+
+  .engineering-top{
+    display:block;
+    margin-bottom:90px;
+  }
+
+  .engineering-note{
+    margin-top:50px;
+    width:90%;
+  }
+
+  .engineering-row{
+    grid-template-columns:45px 1fr;
+    padding:24px 0;
+  }
+
+  .engineering-row .name{
+    font-size:24px;
+  }
+
+  .engineering-row .desc{
+    grid-column:2;
+    margin-top:10px;
+  }
+
+  .position{
+    min-height:80vh;
+    padding:15vh 7vw;
+  }
+
+  .position-word:nth-child(2){
+    margin-left:5vw;
+  }
+
+  .position-word:nth-child(3){
+    margin-left:14vw;
+  }
+
+  .position-sub{
+    margin-top:70px;
+    font-size:15px;
+  }
+
+  .final-film{
+    height:82vh;
+    min-height:560px;
+  }
+
+  .closing{
+    padding:15vh 7vw 7vh;
+  }
+
+  .closing-title{
+    margin:35px 0 60px;
+    font-size:clamp(50px,13vw,85px);
+  }
+
+  .closing-contact{
+    display:block;
+  }
+
+  .contact-meta{
+    margin-top:35px;
+    text-align:left;
+  }
+
+  .footer{
+    margin-top:120px;
+    gap:20px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand">𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤</a>
+
+  <div class="nav-right">
+    <a class="nav-link" href="#capabilities">Capabilities</a>
+    <a class="nav-link" href="#engineering">Engineering</a>
+    <a class="nav-link" href="#contact">Contact</a>
+
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      SYSTEMS / ACTIVE
+    </div>
+  </div>
+</header>
+
+
+<main id="top">
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+  <div class="media">
+    <img
+      src="https://i.imgur.com/Xl0ENvA.jpg"
+      alt=""
+      loading="eager"
+    >
+  </div>
+
+  <div class="hero-content reveal">
+
+    <div class="eyebrow">
+      Independent Technology Engineering / Systems / Research
+    </div>
+
+    <h1 class="hero-title">
+      <span>Systems</span>
+      <span>behind</span>
+      <span class="italic">intelligence.</span>
+    </h1>
+
+    <div class="hero-bottom">
+
+      <p class="hero-copy">
+        𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤 engineers the computational,
+        intelligent, secure and distributed infrastructure beneath
+        the products, institutions and systems of tomorrow.
+      </p>
+
+      <div class="hero-meta">
+        AI / INFRASTRUCTURE / SECURITY<br>
+        SOFTWARE / AUTOMATION / R&amp;D<br>
+        RESEARCH → ENGINEERING → DEPLOYMENT
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero-scroll">SCROLL / EXPLORE</div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="intro">
+
+  <div class="vertical-note">01 / TECHNOLOGY AS INFRASTRUCTURE</div>
+
+  <div class="intro-kicker reveal">
+    The premise
+  </div>
+
+  <h2 class="intro-statement reveal">
+    Technology is no longer a layer
+    <br>
+    sitting <em>on top</em> of the business.
+    <br><br>
+    It <em>is</em> the infrastructure.
+  </h2>
+
+  <div class="intro-aside reveal">
+    <strong>We build accordingly.</strong>
+
+    From intelligent systems and secure infrastructure to
+    distributed computing, automation, financial technology,
+    privacy engineering and bespoke software platforms —
+    we approach technology as an operational system, not
+    a disposable application.
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CINEMATIC VIDEO 01
+========================================================= -->
+
+<section class="film">
+
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="https://i.imgur.com/6IX7egi.jpg"
+    aria-hidden="true"
+  >
+    <source src="https://i.imgur.com/CrDOBlr.mp4" type="video/mp4">
+  </video>
+
+  <div class="film-mark">
+    VOSS / MOVING SYSTEM / 001
+  </div>
+
+  <div class="film-copy reveal">
+    <div class="film-label">
+      Research → Architecture → Production
+    </div>
+
+    <h2 class="film-title">
+      We engineer what<br>
+      <em>others depend on.</em>
+    </h2>
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CAPABILITIES
+========================================================= -->
+
+<section class="capabilities" id="capabilities">
+
+  <div class="cap-head">
+
+    <div class="cap-index">02 / CAPABILITY FIELD / 44 DISCIPLINES</div>
+
+    <h2 class="cap-headline reveal">
+      More than software.<br>
+      <em>An engineering vocabulary.</em>
+    </h2>
+
+    <p class="cap-intro reveal">
+      Intelligence. Infrastructure. Security. Computation.
+      Automation. Digital systems.
+      One engineering environment spanning the layers
+      modern technology actually depends on.
+    </p>
+
+  </div>
+
+
+  <div class="cap-field reveal">
+
+    <div class="cap c1">
+      <small>01</small>
+      AI Engineering
+    </div>
+
+    <div class="cap c2">
+      <small>02</small>
+      Intelligent Systems
+    </div>
+
+    <div class="cap c3">
+      <small>03</small>
+      AI Model Operations / MLOps
+    </div>
+
+    <div class="cap c4">
+      <small>04</small>
+      Data Engineering
+    </div>
+
+    <div class="cap c5">
+      <small>05</small>
+      Data Intelligence
+    </div>
+
+    <div class="cap c6">
+      <small>06</small>
+      Cloud Infrastructure
+    </div>
+
+    <div class="cap c7">
+      <small>07</small>
+      DevOps
+    </div>
+
+    <div class="cap c8">
+      <small>08</small>
+      Platform Engineering
+    </div>
+
+    <div class="cap c9">
+      <small>09</small>
+      Site Reliability Engineering
+    </div>
+
+    <div class="cap c10">
+      <small>10</small>
+      Cybersecurity
+    </div>
+
+    <div class="cap c11">
+      <small>11</small>
+      Privacy Engineering
+    </div>
+
+    <div class="cap c12">
+      <small>12</small>
+      Secure Systems Engineering
+    </div>
+
+    <div class="cap c13">
+      <small>13</small>
+      Security Research
+    </div>
+
+    <div class="cap c14">
+      <small>14</small>
+      Red-Team Engineering
+    </div>
+
+    <div class="cap c15">
+      <small>15</small>
+      Malware Analysis
+    </div>
+
+    <div class="cap c16">
+      <small>16</small>
+      Digital Forensics
+    </div>
+
+    <div class="cap c17">
+      <small>17</small>
+      Web Infrastructure
+    </div>
+
+    <div class="cap c18">
+      <small>18</small>
+      Network Infrastructure
+    </div>
+
+    <div class="cap c19">
+      <small>19</small>
+      Edge Infrastructure
+    </div>
+
+    <div class="cap c20">
+      <small>20</small>
+      API Engineering
+    </div>
+
+    <div class="cap c21">
+      <small>21</small>
+      Systems Integration
+    </div>
+
+    <div class="cap c22">
+      <small>22</small>
+      Automation
+    </div>
+
+    <div class="cap c23">
+      <small>23</small>
+      Autonomous Systems
+    </div>
+
+    <div class="cap c24">
+      <small>24</small>
+      Enterprise Automation
+    </div>
+
+    <div class="cap c25">
+      <small>25</small>
+      Distributed Systems
+    </div>
+
+    <div class="cap c26">
+      <small>26</small>
+      Distributed Computing
+    </div>
+
+    <div class="cap c27">
+      <small>27</small>
+      Blockchain
+    </div>
+
+  </div>
+
+
+  <!-- Remaining capabilities deliberately remain textual,
+       never converted into cards. -->
+
+  <div class="cap-more reveal">
+
+    <div class="cap-more-item">
+      <span>28</span> Web3
+    </div>
+
+    <div class="cap-more-item">
+      <span>29</span> Identity Infrastructure
+    </div>
+
+    <div class="cap-more-item">
+      <span>30</span> Access Management
+    </div>
+
+    <div class="cap-more-item">
+      <span>31</span> Zero-Trust Architecture
+    </div>
+
+    <div class="cap-more-item">
+      <span>32</span> Observability
+    </div>
+
+    <div class="cap-more-item">
+      <span>33</span> Operational Intelligence
+    </div>
+
+    <div class="cap-more-item">
+      <span>34</span> Software Engineering
+    </div>
+
+    <div class="cap-more-item">
+      <span>35</span> Digital Product Engineering
+    </div>
+
+    <div class="cap-more-item">
+      <span>36</span> Financial Technology
+    </div>
+
+    <div class="cap-more-item">
+      <span>37</span> Transaction Technology
+    </div>
+
+    <div class="cap-more-item">
+      <span>38</span> Communications Infrastructure
+    </div>
+
+    <div class="cap-more-item">
+      <span>39</span> Digital Services
+    </div>
+
+    <div class="cap-more-item">
+      <span>40</span> Digital Assets
+    </div>
+
+    <div class="cap-more-item">
+      <span>41</span> Technology Prototyping
+    </div>
+
+    <div class="cap-more-item">
+      <span>42</span> Technology R&amp;D
+    </div>
+
+    <div class="cap-more-item">
+      <span>43</span> Technology Architecture
+    </div>
+
+    <div class="cap-more-item">
+      <span>44</span> Technology Consulting
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     IMAGE INTERLUDE
+========================================================= -->
+
+<section class="image-interlude">
+
+  <img
+    src="https://i.imgur.com/6IX7egi.jpg"
+    alt=""
+    loading="lazy"
+  >
+
+  <div class="interlude-copy reveal">
+    <div class="interlude-number">
+      03 / BUILT BENEATH THE INTERFACE
+    </div>
+
+    <h2 class="interlude-title">
+      Invisible<br>
+      <em>complexity.</em>
+    </h2>
+  </div>
+
+  <div class="interlude-side reveal">
+    The strongest technology rarely announces itself.
+    It simply makes the impossible operational.
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ENGINEERING DEPTH
+========================================================= -->
+
+<section class="engineering" id="engineering">
+
+  <div class="engineering-top">
+
+    <h2 class="engineering-title reveal">
+      From first principle<br>
+      to <em>production reality.</em>
+    </h2>
+
+    <div class="engineering-note reveal">
+      <strong>Engineering, not assembly.</strong>
+
+      We move between research, architecture, implementation,
+      verification, infrastructure and operations without
+      treating the boundaries between them as fixed.
+    </div>
+
+  </div>
+
+
+  <div class="engineering-list">
+
+    <div class="engineering-row reveal">
+      <div class="num">01</div>
+      <div class="name">Architecture</div>
+      <div class="desc">Systems / Platforms / Infrastructure</div>
+    </div>
+
+    <div class="engineering-row reveal">
+      <div class="num">02</div>
+      <div class="name">Intelligence</div>
+      <div class="desc">AI / Automation / Decision Systems</div>
+    </div>
+
+    <div class="engineering-row reveal">
+      <div class="num">03</div>
+      <div class="name">Security</div>
+      <div class="desc">Privacy / Identity / Secure Execution</div>
+    </div>
+
+    <div class="engineering-row reveal">
+      <div class="num">04</div>
+      <div class="name">Computation</div>
+      <div class="desc">Distributed / Edge / Stateful Systems</div>
+    </div>
+
+    <div class="engineering-row reveal">
+      <div class="num">05</div>
+      <div class="name">Operations</div>
+      <div class="desc">Observability / Reliability / Control</div>
+    </div>
+
+    <div class="engineering-row reveal">
+      <div class="num">06</div>
+      <div class="name">Research</div>
+      <div class="desc">Prototyping / Experimental Technology</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     POSITIONING
+========================================================= -->
+
+<section class="position">
+
+  <div class="position-word reveal">BUILD.</div>
+  <div class="position-word reveal">SECURE.</div>
+  <div class="position-word reveal">SCALE.</div>
+
+  <p class="position-sub reveal">
+    <strong>Not another software vendor.</strong>
+    A technology engineering environment for organizations
+    that need systems designed around their actual ambitions —
+    from intelligent products and digital infrastructure to
+    security-critical and mission-critical computation.
+  </p>
+
+</section>
+
+
+<!-- =========================================================
+     CINEMATIC VIDEO 02
+========================================================= -->
+
+<section class="final-film">
+
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="https://i.imgur.com/I11YNnE.jpg"
+    aria-hidden="true"
+  >
+    <source src="https://i.imgur.com/4DERvDB.mp4" type="video/mp4">
+  </video>
+
+  <div class="final-copy reveal">
+
+    <div class="final-kicker">
+      𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤 / SYSTEMS IN MOTION
+    </div>
+
+    <h2 class="final-title">
+      Make the<br>
+      <em>next system.</em>
+    </h2>
+
+    <a href="#contact" class="final-cta">
+      Start an engineering conversation
+      <span>→</span>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CLOSING
+========================================================= -->
+
+<section class="closing" id="contact">
+
+  <div class="closing-label reveal">
+    04 / THE NEXT SYSTEM STARTS HERE
+  </div>
+
+  <h2 class="closing-title reveal">
+    Build what<br>
+    comes <em>next.</em>
+  </h2>
+
+  <p class="closing-copy reveal">
+    𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤 provides the engineering
+    depth behind intelligent systems, secure infrastructure,
+    software platforms, automation, distributed computation
+    and emerging technology.
+
+    <br><br>
+
+    If the technology matters, the architecture matters.
+    If the architecture matters, build it properly.
+  </p>
+
+
+  <div class="closing-contact reveal">
+
+    <a class="contact-link" href="mailto:hello@vosstechnologies.com">
+      hello@vosstechnologies.com
+    </a>
+
+    <div class="contact-meta">
+      AI / INFRASTRUCTURE / SECURITY / SOFTWARE<br>
+      AUTOMATION / DISTRIBUTED SYSTEMS / R&amp;D<br>
+      𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤
+    </div>
+
+  </div>
+
+
+  <footer class="footer">
+    <span>© 2026 𝕍𝕠𝕤𝕤 𝕋𝕖𝕔𝕙𝕟𝕠𝕝𝕠𝕘𝕚𝕖𝕤</span>
+    <span>TECHNOLOGY / ENGINEERING / RESEARCH</span>
+  </footer>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+const nav = document.getElementById("nav");
+
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 40);
+}, {passive:true});
+
+
+/* =========================================================
+   REVEAL SYSTEM
+========================================================= */
+
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{
+  threshold:.08,
+  rootMargin:"0px 0px -40px 0px"
+});
+
+reveals.forEach(el => observer.observe(el));
+
+
+/* =========================================================
+   VIDEO AUTOPLAY / RECOVERY
+   Browsers require muted playback for reliable autoplay.
+========================================================= */
+
+const videos = document.querySelectorAll("video");
+
+videos.forEach(video => {
+
+  video.muted = true;
+  video.setAttribute("muted","");
+  video.setAttribute("playsinline","");
+  video.setAttribute("autoplay","");
+  video.setAttribute("loop","");
+
+  const attemptPlay = () => {
+    const promise = video.play();
+
+    if(promise !== undefined){
+      promise.catch(() => {
+        /* Retry after browser interaction without
+           ever displaying playback controls. */
+      });
+    }
+  };
+
+  if(video.readyState >= 2){
+    attemptPlay();
+  }else{
+    video.addEventListener("canplay", attemptPlay, {once:true});
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if(!document.hidden && video.paused){
+      attemptPlay();
+    }
+  });
+
+});
+
+
+/* =========================================================
+   SUBTLE MEDIA MOVEMENT
+   The media moves gently with the page but playback
+   itself is NEVER dependent on scrolling.
+========================================================= */
+
+const mediaImages = document.querySelectorAll(
+  ".hero .media img, .image-interlude img"
+);
+
+let ticking = false;
+
+function mediaMotion(){
+
+  const scrollY = window.scrollY;
+
+  mediaImages.forEach(img => {
+
+    const section = img.closest("section");
+
+    if(!section) return;
+
+    const rect = section.getBoundingClientRect();
+
+    if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+    const progress =
+      (window.innerHeight - rect.top) /
+      (window.innerHeight + rect.height);
+
+    const movement =
+      Math.max(-12, Math.min(12, (progress - .5) * 24));
+
+    img.style.transform =
+      `scale(1.035) translate3d(0, ${movement}px, 0)`;
+  });
+
+  ticking = false;
+}
+
+window.addEventListener("scroll", () => {
+
+  if(!ticking){
+    window.requestAnimationFrame(mediaMotion);
+    ticking = true;
+  }
+
+},{passive:true});
+
+
+/* =========================================================
+   CAPABILITY MICRO-INTERACTION
+========================================================= */
+
+document.querySelectorAll(".cap").forEach(item => {
+
+  item.addEventListener("mouseenter", () => {
+    item.style.zIndex = "5";
+  });
+
+  item.addEventListener("mouseleave", () => {
+    item.style.zIndex = "";
+  });
+
+});
+
+
+/* =========================================================
+   SMOOTH INTERNAL NAVIGATION
+========================================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+  link.addEventListener("click", event => {
+
+    const id = link.getAttribute("href");
+
+    if(id === "#") return;
+
+    const target = document.querySelector(id);
+
+    if(!target) return;
+
+    event.preventDefault();
+
+    target.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
