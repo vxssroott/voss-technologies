@@ -1582,9 +1582,7 @@
           <span class="media-index">SYSTEM LAYER / 01</span>
           <h2 class="media-title">Built beneath the interface.</h2>
           <p class="media-description">
-            The visible product is often the smallest part of a serious system.
-            Architecture, computation, identity, networking, security and
-            operational intelligence carry the weight underneath it.
+            The visible product is often only the surface expression of a much larger technical environment. Beneath an interface sit the computational resources that execute it, the data systems that give it context, the identity and access structures that determine who or what may act, the network boundaries that carry its traffic, the security controls that constrain its behaviour, and the operational telemetry required to understand what is happening when the system is under real conditions. We engineer these underlying layers as a coherent environment rather than treating them as disconnected implementation details. That means defining boundaries deliberately, understanding how state moves through the system, establishing dependable interfaces between services, designing for failure and recovery, and creating infrastructure that can remain intelligible as the surrounding product changes. The objective is to make the technology beneath the interface as deliberate, observable and durable as the interface itself.
           </p>
         </div>
       </div>
@@ -1605,8 +1603,7 @@
           <span class="media-index">COMPUTATION / 02</span>
           <h2 class="media-title">Intelligence has to move.</h2>
           <p class="media-description">
-            Models become useful when inference, data, retrieval, automation and
-            execution can operate as one controlled computational environment.
+            Models become useful when intelligence can move reliably from computation into action. That requires considerably more than selecting a model: data has to be available in the right form, retrieval has to preserve relevant context, inference has to operate within defined resource and security boundaries, orchestration has to determine what happens next, and every meaningful transition has to remain observable. We design the surrounding computational machinery that turns models and intelligent components into operational systems, including model-serving environments, retrieval and data pathways, agentic workflows, automation primitives, evaluation surfaces and control mechanisms. The emphasis is on making intelligence usable inside real infrastructure, where latency, cost, state, permissions, reliability, privacy and failure behaviour matter just as much as the quality of an individual model response. Intelligence becomes infrastructure when it can consistently participate in the system rather than existing as an isolated feature.
           </p>
         </div>
       </div>
@@ -1627,9 +1624,7 @@
           <span class="media-index">SYSTEM MOTION / 03</span>
           <h2 class="media-title">Infrastructure that behaves like a system.</h2>
           <p class="media-description">
-            Platforms, networks, services, APIs and distributed workloads become
-            more powerful when their boundaries, state and operational behaviour
-            are deliberately engineered.
+            Infrastructure becomes a system when its individual resources are designed to operate as a coordinated whole. Compute, networks, services, APIs, storage, queues and distributed workloads each have their own failure modes, state transitions and operational constraints; the engineering challenge is to define how those components communicate, recover, scale and remain observable without allowing complexity to become invisible. We design infrastructure around explicit service boundaries, predictable interfaces, controlled deployment paths, meaningful telemetry and operational behaviour that can be understood under normal conditions as well as during failure. This includes private and cloud environments, network and edge layers, platform primitives, service infrastructure and distributed execution models. The result is not simply a collection of machines or services, but an operational substrate whose behaviour can be reasoned about, measured and evolved as the system grows.
           </p>
         </div>
       </div>
@@ -1651,6 +1646,8 @@
         <div class="media-copy right reveal">
           <span class="media-index">ARCHITECTURE / 04</span>
           <h2 class="media-title">Every layer has a consequence.</h2>
+          <p class="media-description">
+            Architecture is a sequence of decisions about where computation lives, where data is allowed to travel, how services communicate, how identity is established, where trust is granted, and what happens when an individual component stops behaving as expected. A seemingly small implementation choice can alter performance, security exposure, operational complexity, recovery behaviour and the long-term cost of maintaining the system. Our engineering process therefore treats architecture as an active technical discipline rather than a document produced before implementation. We examine dependencies, state, interfaces, resource constraints, failure boundaries and operational requirements together, then translate those relationships into systems that can actually be built, tested and operated. The purpose is not architectural complexity for its own sake. It is to make consequential decisions explicit early enough that the resulting system remains coherent when real workloads, real users and real operational pressure arrive.</p>
         </div>
       </div>
 
@@ -1670,9 +1667,7 @@
           <span class="media-index">SECURITY / 05</span>
           <h2 class="media-title">Security becomes architecture.</h2>
           <p class="media-description">
-            Identity, privacy, secure execution, adversarial research, telemetry
-            and evidence are designed into the system rather than attached to its
-            perimeter afterwards.
+            Security becomes materially stronger when it is expressed throughout the architecture instead of being treated as a perimeter around an otherwise unconstrained system. Identity determines which actors and services are recognised; authorization determines what they are permitted to do; privacy controls determine which information may be exposed and under what conditions; secure execution constrains how sensitive operations occur; telemetry provides the evidence required to detect and investigate unexpected behaviour. We approach these properties as connected engineering concerns, extending from network boundaries and service interfaces to application behaviour, cryptographic controls, adversarial testing, forensic evidence and operational response. Security research and controlled red-team work can then be used to examine the assumptions built into the environment rather than simply searching for isolated defects. The objective is a system in which trust, exposure, evidence and response are architectural properties that can be inspected and continuously improved.
           </p>
         </div>
       </div>
@@ -1694,6 +1689,8 @@
         <div class="media-copy right reveal">
           <span class="media-index">RESEARCH / 06</span>
           <h2 class="media-title">From research to production.</h2>
+          <p class="media-description">
+            Research becomes engineering when an idea is subjected to the same constraints that govern a real system. A promising hypothesis has to survive experimentation, implementation, measurement, failure analysis and repeated revision before it can become dependable infrastructure. We use prototyping to expose unknowns early, test architectural assumptions, compare implementation strategies and determine which technical ideas deserve further investment. That process may involve new computational primitives, security mechanisms, distributed architectures, intelligent automation, developer infrastructure or entirely bespoke system components. The transition from prototype to production is treated as an engineering problem in its own right: interfaces must become explicit, state must become manageable, operational behaviour must become observable, security properties must become testable and deployment must become repeatable. Research is valuable when it produces knowledge that can be translated into systems capable of operating beyond the laboratory.
         </div>
       </div>
 
@@ -1712,6 +1709,8 @@
         <div class="media-copy left reveal">
           <span class="media-index">EVOLUTION / 07</span>
           <h2 class="media-title">Build what comes next.</h2>
+          <p class="media-description">
+            The systems that matter next will not emerge from a single discipline. They will be assembled from computation, intelligence, infrastructure, security, automation, distributed architecture, data, identity and operational knowledge working together as one engineered environment. That is the space we work in: difficult technical problems where an existing application pattern is not enough and where the surrounding infrastructure is part of the product itself. We take systems from early technical questions through architecture, experimentation, implementation, verification and deployment, while keeping the underlying behaviour understandable to the people responsible for operating it. The ambition is not to follow the shape of an existing category simply because it is familiar. It is to understand the problem deeply enough to build the computational and operational machinery required by the problem itself, then make that machinery durable enough to support whatever comes after it.
         </div>
       </div>
 
@@ -2274,86 +2273,86 @@
     intelligence:{
       title:"Intelligence",
       capabilities:[
-        ["⚙️ AI Engineering","Designing computational systems that integrate models, inference, orchestration and real execution environments."],
-        ["🤖 Intelligent Systems","Engineering software that incorporates reasoning, perception, decision and adaptive behaviour."],
-        ["🧠 AI Model Operations / MLOps","Operational infrastructure for model lifecycle, deployment, evaluation, observability and controlled iteration."],
-        ["🗄️ Data Engineering","Building the pipelines, storage systems and transformations required to make data operational."],
-        ["📊 Data Intelligence","Turning complex data environments into structured signals, analysis and decision-support systems."],
-        ["🧠 Autonomous Systems","Designing systems capable of sensing state, selecting actions and operating through defined control boundaries."],
-        ["🧭 Operational Intelligence","Connecting telemetry, events and system state into actionable operational understanding."]
+        [" AI Engineering","Designing computational systems that integrate models, inference, orchestration and real execution environments."],
+        [" Intelligent Systems","Engineering software that incorporates reasoning, perception, decision and adaptive behaviour."],
+        [" AI Model Operations / MLOps","Operational infrastructure for model lifecycle, deployment, evaluation, observability and controlled iteration."],
+        [" Data Engineering","Building the pipelines, storage systems and transformations required to make data operational."],
+        [" Data Intelligence","Turning complex data environments into structured signals, analysis and decision-support systems."],
+        [" Autonomous Systems","Designing systems capable of sensing state, selecting actions and operating through defined control boundaries."],
+        [" Operational Intelligence","Connecting telemetry, events and system state into actionable operational understanding."]
       ]
     },
 
     infrastructure:{
       title:"Infrastructure",
       capabilities:[
-        ["☁️ Cloud Infrastructure","Engineering compute, storage, networking and service environments across modern cloud architectures."],
-        ["⚡ DevOps","Connecting development and operations through automated build, deployment and lifecycle systems."],
-        ["🏗️ Platform Engineering","Creating internal platforms that standardize infrastructure, developer workflows and operational primitives."],
-        ["🛠️ Site Reliability Engineering","Engineering reliability through observability, automation, failure analysis and operational discipline."],
-        ["🌐 Web Infrastructure","Designing the underlying delivery, runtime and service infrastructure supporting web systems."],
-        ["📡 Network Infrastructure","Engineering network topology, routing, segmentation and connectivity as programmable infrastructure."],
-        ["🌍 Edge Infrastructure","Moving computation and delivery closer to users, devices and operational boundaries."],
-        ["🔗 API Engineering","Designing durable service interfaces, contracts, gateways and machine-to-machine communication layers."],
-        ["📨 Communications Infrastructure","Building technical substrates for dependable system-to-system and application communication."]
+        [" Cloud Infrastructure","Engineering compute, storage, networking and service environments across modern cloud architectures."],
+        [" DevOps","Connecting development and operations through automated build, deployment and lifecycle systems."],
+        [" Platform Engineering","Creating internal platforms that standardize infrastructure, developer workflows and operational primitives."],
+        [" Site Reliability Engineering","Engineering reliability through observability, automation, failure analysis and operational discipline."],
+        [" Web Infrastructure","Designing the underlying delivery, runtime and service infrastructure supporting web systems."],
+        [" Network Infrastructure","Engineering network topology, routing, segmentation and connectivity as programmable infrastructure."],
+        [" Edge Infrastructure","Moving computation and delivery closer to users, devices and operational boundaries."],
+        [" API Engineering","Designing durable service interfaces, contracts, gateways and machine-to-machine communication layers."],
+        [" Communications Infrastructure","Building technical substrates for dependable system-to-system and application communication."]
       ]
     },
 
     security:{
       title:"Security",
       capabilities:[
-        ["🛡️ Cybersecurity","Engineering security controls across infrastructure, applications, networks, identities and operations."],
-        ["🔐 Privacy Engineering","Designing systems around data minimization, exposure boundaries, privacy controls and verification."],
-        ["🔒 Secure Systems Engineering","Embedding security properties into system architecture, execution paths and operational controls."],
-        ["🔬 Security Research","Investigating emerging attack surfaces, defensive mechanisms and technical security hypotheses."],
-        ["🟥 Red-Team Engineering","Building controlled adversarial testing capabilities for authorized environments and security assessment."],
-        ["🧬 Malware Analysis","Reverse engineering and behavioural analysis of malicious software and suspicious execution."],
-        ["🕵️ Digital Forensics","Preserving, correlating and analysing technical evidence from systems and security events."],
-        ["🔑 Identity Infrastructure","Engineering identity primitives, trust relationships and authentication architecture."],
-        ["🪪 Access Management","Designing authorization, entitlement and access-control systems around explicit policy."],
-        ["🛡️ Zero-Trust Architecture","Treating trust as an explicit architectural property rather than an assumed network location."]
+        [" Cybersecurity","Engineering security controls across infrastructure, applications, networks, identities and operations."],
+        [" Privacy Engineering","Designing systems around data minimization, exposure boundaries, privacy controls and verification."],
+        [" Secure Systems Engineering","Embedding security properties into system architecture, execution paths and operational controls."],
+        [" Security Research","Investigating emerging attack surfaces, defensive mechanisms and technical security hypotheses."],
+        [" Red-Team Engineering","Building controlled adversarial testing capabilities for authorized environments and security assessment."],
+        [" Malware Analysis","Reverse engineering and behavioural analysis of malicious software and suspicious execution."],
+        [" Digital Forensics","Preserving, correlating and analysing technical evidence from systems and security events."],
+        [" Identity Infrastructure","Engineering identity primitives, trust relationships and authentication architecture."],
+        [" Access Management","Designing authorization, entitlement and access-control systems around explicit policy."],
+        [" Zero-Trust Architecture","Treating trust as an explicit architectural property rather than an assumed network location."]
       ]
     },
 
     systems:{
       title:"Systems",
       capabilities:[
-        ["🔌 Systems Integration","Connecting independent technical systems through controlled interfaces, contracts and operational workflows."],
-        ["🧬 Distributed Systems","Engineering software whose components coordinate across processes, machines and failure boundaries."],
-        ["💻 Distributed Computing","Designing computational workloads that execute across multiple resources while preserving control and observability."],
-        ["📈 Observability","Turning system behaviour into structured telemetry that can be inspected, correlated and acted upon."],
-        ["💻 Software Engineering","Building maintainable software systems around clear boundaries, behaviour, testing and lifecycle discipline."],
-        ["🖥️ Digital Product Engineering","Engineering complete digital products from underlying architecture through operational delivery."],
-        ["🏛️ Technology Architecture","Mapping technology strategy into coherent computational, infrastructure and operational systems."]
+        [" Systems Integration","Connecting independent technical systems through controlled interfaces, contracts and operational workflows."],
+        [" Distributed Systems","Engineering software whose components coordinate across processes, machines and failure boundaries."],
+        [" Distributed Computing","Designing computational workloads that execute across multiple resources while preserving control and observability."],
+        [" Observability","Turning system behaviour into structured telemetry that can be inspected, correlated and acted upon."],
+        [" Software Engineering","Building maintainable software systems around clear boundaries, behaviour, testing and lifecycle discipline."],
+        [" Digital Product Engineering","Engineering complete digital products from underlying architecture through operational delivery."],
+        [" Technology Architecture","Mapping technology strategy into coherent computational, infrastructure and operational systems."]
       ]
     },
 
     automation:{
       title:"Automation",
       capabilities:[
-        ["🤖 Automation","Replacing repetitive technical operations with deterministic, programmable workflows."],
-        ["🏢 Enterprise Automation","Orchestrating complex organizational processes across systems, data and operational boundaries."],
-        ["📱 Digital Services","Engineering service layers that expose technology capabilities through dependable user and machine interfaces."],
-        ["💳 Transaction Technology","Engineering reliable transaction workflows, processing systems, controls and reconciliation primitives."]
+        [" Automation","Replacing repetitive technical operations with deterministic, programmable workflows."],
+        [" Enterprise Automation","Orchestrating complex organizational processes across systems, data and operational boundaries."],
+        [" Digital Services","Engineering service layers that expose technology capabilities through dependable user and machine interfaces."],
+        [" Transaction Technology","Engineering reliable transaction workflows, processing systems, controls and reconciliation primitives."]
       ]
     },
 
     digital:{
       title:"Digital",
       capabilities:[
-        ["⛓️ Blockchain","Engineering distributed ledger systems and programmable transaction infrastructure where appropriate."],
-        ["🌐 Web3","Exploring decentralized architectures, protocols, identity models and programmable digital ecosystems."],
-        ["🏦 Financial Technology","Engineering technology around financial operations, verification, transaction systems and digital infrastructure."],
-        ["💎 Digital Assets","Building technical infrastructure around programmable ownership, digital value and asset-oriented systems."]
+        [" Blockchain","Engineering distributed ledger systems and programmable transaction infrastructure where appropriate."],
+        [" Web3","Exploring decentralized architectures, protocols, identity models and programmable digital ecosystems."],
+        [" Financial Technology","Engineering technology around financial operations, verification, transaction systems and digital infrastructure."],
+        [" Digital Assets","Building technical infrastructure around programmable ownership, digital value and asset-oriented systems."]
       ]
     },
 
     rd:{
       title:"Research & Development",
       capabilities:[
-        ["🧪 Technology Prototyping","Turning difficult technical hypotheses into working experimental systems that can be evaluated."],
-        ["🔭 Technology R&D","Exploring emerging computational models, architectures and engineering primitives beyond established patterns."],
-        ["🧠 Technology Consulting","Applying systems engineering, architecture and technical strategy to complex technology decisions."]
+        [" Technology Prototyping","Turning difficult technical hypotheses into working experimental systems that can be evaluated."],
+        [" Technology R&D","Exploring emerging computational models, architectures and engineering primitives beyond established patterns."],
+        [" Technology Consulting","Applying systems engineering, architecture and technical strategy to complex technology decisions."]
       ]
     }
   };
