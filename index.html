@@ -2692,7 +2692,20 @@ Regards,
         "&body=" +
         encodeURIComponent(flow.body);
 
-      window.location.href = mailto;
+      const isMobile =
+        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if(isMobile){
+        window.location.href = mailto;
+      }else{
+        const gmailCompose =
+          "https://mail.google.com/mail/?view=cm&fs=1" +
+          "&to=" + encodeURIComponent(contact) +
+          "&su=" + encodeURIComponent(flow.subject) +
+          "&body=" + encodeURIComponent(flow.body);
+
+        window.open(gmailCompose, "_blank", "noopener,noreferrer");
+      }
 
     });
 
